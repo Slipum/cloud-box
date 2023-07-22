@@ -6,6 +6,8 @@
 
 ```bash
 $ pnpm install
+
+$ pnpm install --save @nestjs/cli
 ```
 
 ## Running the app
