@@ -1,11 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserEntity } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {
-  constructor(private repository: Repository<UserEntity>) {}
+  repository: any;
+  constructor(
+    @InjectRepository(UserEntity)
+    private userRepository: Repository<UserEntity>,
+  ) {}
 
   async findByEmail(email: string) {
     return this.repository.findOneBy({
